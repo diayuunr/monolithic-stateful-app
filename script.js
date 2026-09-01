@@ -27,7 +27,7 @@ registerForm.addEventListener("submit", async (event) => {
     const nama = document.getElementById("register-nama").value;
     const password = document.getElementById("register-password").value;
     try {
-        const response = await fetch("http://localhost:8000/?action=register", {
+        const response = await fetch("/?action=register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -61,7 +61,7 @@ loginForm.addEventListener("submit", async (event) => {
     const username = document.getElementById("login-username").value;
     const password = document.getElementById("login-password").value;
     try {
-        const response = await fetch("http://localhost:8000/?action=login", {
+        const response = await fetch("/?action=login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -99,7 +99,7 @@ puisiForm.addEventListener("submit", async (event) => {
     const kategori = document.getElementById("kategori").value;
     const keyword = document.getElementById("keyword").value;
     try {
-        const response = await fetch("http://localhost:8000/?action=submit_puisi", {
+        const response = await fetch("/?action=submit_puisi", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -127,7 +127,7 @@ puisiForm.addEventListener("submit", async (event) => {
 
 async function loadPuisi() {
     try {
-        const response = await fetch("http://localhost:8000/?action=daftar_puisi", {
+        const response = await fetch("/?action=daftar_puisi", {
             method: "GET",
             credentials: "include"
         });
@@ -161,7 +161,7 @@ async function loadPuisi() {
 
 document.getElementById("logout-button").addEventListener("click", async () => {
     try {
-        const response = await fetch("http://localhost:8000/?action=logout", {
+        const response = await fetch("/?action=logout", {
             method: "POST",
             credentials: "include"
         });
