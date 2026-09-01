@@ -306,6 +306,6 @@ class RequestHandler(BaseHTTPRequestHandler):
         response = {"status": "success", "message": "Logout berhasil"}
         self.wfile.write(json.dumps(response).encode())
 
-server = HTTPServer(("0.0.0.0", 8000), RequestHandler)
-print("Server berjalan di port 8000")
+server = HTTPServer(("0.0.0.0", 8080), RequestHandler)
+print("Server berjalan di port 8080")
 server.serve_forever()
