@@ -25,11 +25,12 @@ registerForm.addEventListener("submit", async (event) => {
     const username = document.getElementById("register-username").value;
     const nama = document.getElementById("register-nama").value;
     const password = document.getElementById("register-password").value;
+    const no_id = document.getElementById("register-no-id").value;
     try {
         const response = await fetch("/?action=register", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({username, nama, password})
+            body: JSON.stringify({username, nama, password, no_id})
         });
         const data = await response.json();
         if (response.ok) {

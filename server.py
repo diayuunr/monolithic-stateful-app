@@ -106,11 +106,12 @@ class RequestHandler(BaseHTTPRequestHandler):
         username = data.get("username")
         nama = data.get("nama")
         password = data.get("password")
-        if not username or not nama or not password:
+        no_id = data.get("no_id")
+        if not username or not nama or not password or not no_id:
             self.send_response(400)
             self.send_header("Content-Type", "application/json")
             self.end_headers()
-            response = {"status": "error", "message": "Username, nama, and password harus diisi"}
+            response = {"status": "error", "message": "Username, nama, password, and no_id harus diisi"}
             self.wfile.write(json.dumps(response).encode())
             return
         try:
@@ -127,7 +128,7 @@ class RequestHandler(BaseHTTPRequestHandler):
                 cursor.close()
                 db.close()
                 return
-            cursor.execute("INSERT INTO users (username, nama, password) VALUES (%s, %s, %s)", (username, nama, password))
+            cursor.execute("INSERT INTO users (username, nama, password, no_id) VALUES (%s, %s, %s, %s)", (username, nama, password, no_id))
             db.commit()
             cursor.close()
             db.close()
@@ -159,7 +160,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         try:
             db = get_db_connection()
             cursor = db.cursor()
-            cursor.execute("SELECT id, username, password, nama FROM users WHERE username = %s AND password = %s", (username, password))
+            cursor.execute("SELECT id, username, password, nama, no_id FROM users WHERE username = %s AND password = %s", (username, password))
             user = cursor.fetchone()
             cursor.close()
             db.close()
