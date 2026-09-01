@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <section id="login-page">
+            <h1>Login</h1>
+            <form id="login-form">
+                <label for="login-username">Username</label>
+                <input type="text" id="login-username" required>
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" required>
+                <button type="submit">Login</button>
+            </form>
+            <p id="login-message"></p>
+            <p>
+                Belum punya akun?
+                <button type="button" id="show-register">Register</button>
+            </p>
+        </section>
+
+        <section id="register-page" style="display: none;">
+            <h1>Register</h1>
+            <form id="register-form">
+                <label for="register-username">Username</label>
+                <input type="text" id="register-username" required>
+                <label for="register-nama">Nama</label>
+                <input type="text" id="register-nama" required>
+                <label for="register-password">Password</label>
+                <input type="password" id="register-password" required>
+                <button type="submit">Register</button>
+            </form>
+            <p id="register-message"></p>
+            <p>
+                Sudah punya akun?
+                <button type="button" id="show-login">Login</button>
+            </p>
+        </section>
+
+        <section id="app-page" style="display: none;">
+            <header>
+                <h1>Puisi App</h1>
+                <button type="button" id="logout-button">Logout</button>
+            </header>
+            <h2>Hai, <span id="user-name"></span></h2>
+            <section>
+                <h2>Submit Puisi</h2>
+                <form id="puisi-form">
+                    <label for="judul">Judul</label>
+                    <input type="text" id="judul" required>
+                    <label for="isi">Isi Puisi</label>
+                    <textarea id="isi" rows="8" required></textarea>
+                    <label for="kategori">Kategori</label>
+                    <input type="text" id="kategori" required>
+                    <label for="keyword">Keyword</label>
+                    <input type="text" id="keyword">
+                    <button type="submit">Submit Puisi</button>
+                </form>
+                <p id="puisi-message"></p>
+            </section>
+            <section>
+                <h2>Daftar Puisi Saya</h2>
+                <div id="puisi-list"></div>
+            </section>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

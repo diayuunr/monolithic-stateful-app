@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg-gradient: linear-gradient(135deg, #161601 0%, #3f4910 50%, #787c13 100%);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-hover: rgba(255, 255, 255, 0.08);
+  --accent-gradient: linear-gradient(135deg, #000000 0%, #3a4009 100%);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --danger-bg: rgba(239, 68, 68, 0.2);
+  --danger-text: #440303;
+  --danger-hover: #810b0b;
+  --radius-xl: 24px;
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --shadow-glow: 0 20px 50px rgba(245, 241, 131, 0.15);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.container {
+  width: 100%;
+  max-width: 500px;
+}
+
+section {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: 40px;
+  box-shadow: var(--shadow-glow);
+  margin-bottom: 30px;
+  animation: fadeIn 0.5s ease-out;
+}
+
+#app-page section {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 28px;
+  border-radius: var(--radius-lg);
+  margin-bottom: 24px;
+}
+
+h1, h2, h3 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #ffffff;
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 30px;
+  background: white;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.02em;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+
+#app-page > h2 {
+  font-size: 1.6rem;
+  margin-bottom: 24px;
+  color: #e2e8f0;
+}
+
+#user-name {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-style: italic;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: white;
+  margin-bottom: -10px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 14px 18px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  transition: var(--transition);
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #818cf8;
+  background: rgba(15, 23, 42, 0.8);
+  box-shadow: 0 0 0 4px rgba(129, 140, 248, 0.15);
+}
+
+textarea {
+  resize: vertical;
+  line-height: 1.7;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+}
+
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 24px;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+button[type="submit"] {
+  background: var(--accent-gradient);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(129, 140, 248, 0.3);
+  margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(252, 250, 132, 0.4);
+}
+
+#show-register,
+#show-login {
+  background: transparent;
+  color: rgb(31, 32, 2);
+  padding: 0;
+  margin-left: 6px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-weight: bold;
+}
+
+#show-register:hover,
+#show-login:hover {
+  color: rgb(243, 246, 168);
+}
+
+#logout-button {
+  background: var(--danger-bg);
+  color: var(--danger-text);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 8px 18px;
+  font-size: 0.85rem;
+}
+
+#logout-button:hover {
+  background: var(--danger-hover);
+  color: white;
+}
+
+p {
+  color: white;
+  font-size: 0.95rem;
+}
+
+section > p:last-child {
+  text-align: center;
+  margin-top: 24px;
+}
+
+#login-message,
+#register-message,
+#puisi-message {
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  background: rgba(129, 140, 248, 0.1);
+  border: 1px solid rgba(129, 140, 248, 0.2);
+  color: white;
+  font-size: 0.9rem;
+  margin-top: 10px;
+  text-align: left;
+}
+
+#login-message:empty,
+#register-message:empty,
+#puisi-message:empty {
+  display: none;
+}
+
+#puisi-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
+}
+
+.puisi-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.puisi-item:hover {
+  transform: translateY(-4px);
+  background: var(--glass-hover);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.puisi-item h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  color: #f3e8ff;
+}
+
+.puisi-item p {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: #e2e8f0;
+  margin: 12px 0;
+  white-space: pre-line;
+}
+
+.puisi-meta {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-style: normal;
+  font-size: 0.8rem !important;
+  color: rgb(245, 244, 208) !important;
+  margin-top: 16px !important;
+  padding-top: 16px;
+  border-top: 1px dashed var(--glass-border);
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
