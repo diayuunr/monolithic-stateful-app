@@ -466,6 +466,6 @@ class RequestHandler(BaseHTTPRequestHandler):
             json.dumps(response).encode()
         )
 
-server = HTTPServer(("localhost", 8000), RequestHandler)
-print("Server berjalan di http://localhost:8000")
+server = HTTPServer(("0.0.0.0", 8000), RequestHandler)
+print("Server berjalan di http://0.0.0.0:8000")
 server.serve_forever()
