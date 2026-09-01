@@ -22,27 +22,19 @@ document.getElementById("show-login").addEventListener("click", () => {
 
 registerForm.addEventListener("submit", async (event) => {
     event.preventDefault();
-
     const username = document.getElementById("register-username").value;
     const nama = document.getElementById("register-nama").value;
     const password = document.getElementById("register-password").value;
     try {
         const response = await fetch("/?action=register", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                username: username,
-                nama: nama,
-                password: password
-            })
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({username, nama, password})
         });
         const data = await response.json();
         if (response.ok) {
             registerMessage.textContent = data.message;
             registerForm.reset();
-
             setTimeout(() => {
                 registerPage.style.display = "none";
                 loginPage.style.display = "block";
@@ -52,6 +44,7 @@ registerForm.addEventListener("submit", async (event) => {
             registerMessage.textContent = data.message;
         }
     } catch (error) {
+        console.error(error);
         registerMessage.textContent = "Tidak dapat terhubung ke server";
     }
 });
@@ -63,31 +56,23 @@ loginForm.addEventListener("submit", async (event) => {
     try {
         const response = await fetch("/?action=login", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
+            headers: {"Content-Type": "application/json"},
             credentials: "include",
-            body: JSON.stringify({
-                username: username,
-                password: password
-            })
+            body: JSON.stringify({username, password})
         });
         const data = await response.json();
         if (response.ok) {
             userName.textContent = data.nama;
-
             loginPage.style.display = "none";
             registerPage.style.display = "none";
             appPage.style.display = "block";
-
             loginForm.reset();
-
             loadPuisi();
         } else {
             loginMessage.textContent = data.message;
         }
-
     } catch (error) {
+        console.error(error);
         loginMessage.textContent = "Tidak dapat terhubung ke server";
     }
 });
@@ -101,16 +86,9 @@ puisiForm.addEventListener("submit", async (event) => {
     try {
         const response = await fetch("/?action=submit_puisi", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
+            headers: {"Content-Type": "application/json"},
             credentials: "include",
-            body: JSON.stringify({
-                judul: judul,
-                isi: isi,
-                kategori: kategori,
-                keyword: keyword
-            })
+            body: JSON.stringify({judul, isi, kategori, keyword})
         });
         const data = await response.json();
         if (response.ok) {
@@ -121,6 +99,7 @@ puisiForm.addEventListener("submit", async (event) => {
             puisiMessage.textContent = data.message;
         }
     } catch (error) {
+        console.error(error);
         puisiMessage.textContent = "Tidak dapat terhubung ke server";
     }
 });
@@ -144,7 +123,6 @@ async function loadPuisi() {
         data.data.forEach((puisi) => {
             const item = document.createElement("div");
             item.className = "puisi-item";
-
             item.innerHTML = `
                 <h3>${puisi.judul}</h3>
                 <p>${puisi.isi}</p>
@@ -155,6 +133,7 @@ async function loadPuisi() {
             puisiList.appendChild(item);
         });
     } catch (error) {
+        console.error(error);
         puisiList.innerHTML = "<p>Tidak dapat terhubung ke server.</p>";
     }
 }
@@ -173,8 +152,11 @@ document.getElementById("logout-button").addEventListener("click", async () => {
             puisiList.innerHTML = "";
             puisiMessage.textContent = "";
             loginMessage.textContent = data.message;
+        } else {
+            puisiMessage.textContent = data.message;
         }
     } catch (error) {
+        console.error(error);
         puisiMessage.textContent = "Tidak dapat terhubung ke server";
     }
 });
